@@ -1,0 +1,147 @@
+{
+  "name": "grove-platform",
+  "version": "1.0.0",
+  "description": "Grove Platform - Where digital touchpoints grow into business ecosystems",
+  "keywords": [
+    "grove",
+    "platform", 
+    "enterprise",
+    "digital-transformation",
+    "microservices",
+    "ecosystem",
+    "touchpoints",
+    "business-growth",
+    "sprout-level",
+    "grove"
+  ],
+  "homepage": "https://github.com/aguennoune/grove-platform-ce",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aguennoune/grove-platform-ce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aguennoune/grove-platform-ce/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Grove Community",
+    "email": "aguennoune@outlook.com"
+  },
+  "contributors": [
+    {
+      "name": "Grove Platform Community",
+      "url": "https://github.com/aguennoune/grove-platform-ce/graphs/contributors"
+    }
+  ],
+  "main": "src/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "grove:start": "node src/grove-platform.js",
+    "grove:dev": "nodemon src/grove-platform.js --watch src",
+    "grove:build": "npm run build:core && npm run build:studio && npm run build:analytics",
+    "grove:test": "jest --config jest.config.js",
+    "grove:test:watch": "jest --watch",
+    "grove:test:coverage": "jest --coverage",
+    "grove:deploy": "node scripts/grove-deploy.js",
+    "grove:deploy:production": "NODE_ENV=production npm run grove:deploy",
+    "grove:scale": "node scripts/grove-scale.js",
+    "build:core": "webpack --config webpack.grove-core.js",
+    "build:studio": "webpack --config webpack.grove-studio.js", 
+    "build:analytics": "webpack --config webpack.grove-analytics.js",
+    "build:connect": "webpack --config webpack.grove-connect.js",
+    "dev:core": "webpack-dev-server --config webpack.grove-core.js",
+    "dev:studio": "webpack-dev-server --config webpack.grove-studio.js",
+    "dev:analytics": "webpack-dev-server --config webpack.grove-analytics.js",
+    "lint": "eslint src/ --ext .js,.ts,.jsx,.tsx",
+    "lint:fix": "eslint src/ --ext .js,.ts,.jsx,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,jsx,tsx,json,md}\"",
+    "security": "npm audit && npm run security:snyk",
+    "security:snyk": "snyk test",
+    "docs:build": "typedoc --out docs/api src/",
+    "docs:serve": "http-server docs/api -p 8080",
+    "community:setup": "bash scripts/github-community-setup.sh",
+    "enterprise:configure": "node scripts/grove-enterprise-config.js"
+  },
+  "dependencies": {
+    "@grove-platform/core": "^1.0.0",
+    "@grove-platform/studio": "^1.0.0", 
+    "@grove-platform/analytics": "^1.0.0",
+    "@grove-platform/connect": "^1.0.0",
+    "express": "^4.18.2",
+    "winston": "^3.8.2",
+    "dotenv": "^16.0.3",
+    "helmet": "^6.1.5",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4",
+    "rate-limiter-flexible": "^2.4.1",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "mongoose": "^7.0.3",
+    "redis": "^4.6.5",
+    "bull": "^4.10.4",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.2",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1", 
+    "webpack-dev-server": "^4.13.1",
+    "http-server": "^14.1.1",
+    "typedoc": "^0.23.28",
+    "snyk": "^1.1136.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "grove": {
+    "platform": {
+      "version": "1.0.0",
+      "ecosystem": "community",
+      "features": [
+        "grove-core",
+        "grove-studio", 
+        "grove-connect",
+        "grove-analytics"
+      ]
+    },
+    "enterprise": {
+      "available": true,
+      "contact": "enterprise@example-grove-platform.com",
+      "features": [
+        "advanced-security",
+        "multi-tenant",
+        "global-deployment",
+        "priority-support"
+      ]
+    },
+    "community": {
+      "discord": "https://discord.gg/grove-platform",
+      "github": "https://github.com/aguennoune/grove-platform-ce"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/aguennoune"
+  }
+}
